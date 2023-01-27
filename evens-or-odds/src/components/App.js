@@ -47,7 +47,7 @@ class App extends Component {
           )
         }
       </div>
-    ); 
+    );
   }
 }
 
@@ -70,6 +70,7 @@ const mapStateToProps = state => {
 //   };
 // }
 
+// shorter way of writing the above function? (CHECK)
 const componentConnector = connect(
   mapStateToProps,
   {
