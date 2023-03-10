@@ -5,6 +5,10 @@ import { fetchNewDeck } from '../actions/deck';
 import fetchStates from '../reducers/fetchStates';
 import Instructions from './Instructions';
 import DrawCard from './DrawCard';
+import CardDisplay from './CardDisplay';
+import Guess from './Guess';
+import SuitsGuess from './SuitsGuess';
+import GameState from './GameState';
 
 class App extends Component {
   startGame = () => {
@@ -14,6 +18,7 @@ class App extends Component {
 
   render() {
     console.log('this', this);
+    console.log('this.state', this.state);
 
     if (this.props.fetchState === fetchStates.error) {
       return (
@@ -26,13 +31,20 @@ class App extends Component {
 
     return (
       <div>
-        <h2>♡ ♤ Evens or Odds ♢ ♧</h2>
+        <h2>♡ ♤ Guess the card! ♢ ♧</h2>
         {
           this.props.gameStarted ? (
             <div>
               <h3>The game is on!</h3>
+              <GameState />
+              <br />
+              <Guess />
+              <br />
+              <SuitsGuess />
               <br />
               <DrawCard />
+              <hr />
+              <CardDisplay />
               <hr />
               <button onClick={this.props.cancelGame}>Cancel Game</button>
             </div>
