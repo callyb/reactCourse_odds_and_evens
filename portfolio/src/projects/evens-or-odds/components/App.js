@@ -7,8 +7,9 @@ import Instructions from './Instructions';
 import DrawCard from './DrawCard';
 import CardDisplay from './CardDisplay';
 import Guess from './Guess';
-// import SuitsGuess from './SuitsGuess';
 import GameState from './GameState';
+import Button from '@mui/material/Button';
+import { Paper } from '@mui/material';
 
 class App extends Component {
   startGame = () => {
@@ -30,35 +31,57 @@ class App extends Component {
     }
 
     return (
-      <div>
-        <h2>♡ ♤ Guess the card! ♢ ♧</h2>
-        {
-          this.props.gameStarted ? (
-            <div>
-              <h3>The game is on!</h3>
-              <GameState />
-              <br />
-              <Guess />
-              {/* <br />
+      <Paper
+        elevation={3}
+        style={{ padding: '5%' }}
+      >
+        <div>
+          <h1 style={{
+            color: 'red',
+            fontFamily: 'Rubik Marker Hatch'
+          }}>♡ ♤ Guess the card! ♢ ♧</h1>
+          {
+            this.props.gameStarted ? (
+              <div>
+                <h3 style={{
+                  color: 'blue',
+                  fontFamily: 'Righteous'
+                }}>The game is on!</h3>
+                <GameState />
+                <br />
+                <Guess />
+                {/* <br />
               <SuitsGuess /> */}
-              <br />
-              <DrawCard />
-              <hr />
-              <CardDisplay />
-              <hr />
-              <button onClick={this.props.cancelGame}>Cancel Game</button>
-            </div>
-          ) : (
-            <div>
-              <h3>A new game awaits</h3>
-              <br />
-              <button onClick={this.startGame}>Start Game</button>
-              <hr />
-              <Instructions />
-            </div>
-          )
-        }
-      </div>
+                <br />
+                <DrawCard />
+                <hr />
+                <CardDisplay />
+                <hr />
+                <Button
+                  onClick={this.props.cancelGame}
+                  variant="contained"
+                  color="error"
+                >Cancel Game</Button>
+              </div>
+            ) : (
+              <div>
+                <h3 style={{
+                  color: 'blue',
+                  fontFamily: 'Righteous'
+                }}>A new game awaits</h3>
+                <br />
+                <Button
+                  onClick={this.startGame}
+                  variant="contained"
+                  color="error"
+                >Start Game</Button>
+                <hr />
+                <Instructions />
+              </div>
+            )
+          }
+        </div>
+      </Paper>
     );
   }
 }
